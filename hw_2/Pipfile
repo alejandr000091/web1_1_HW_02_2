@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+prompt-toolkit = "==3.0.41"
+wcwidth = "==0.2.12"
+setuptools  = "==69.0.2"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
