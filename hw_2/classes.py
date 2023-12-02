@@ -78,9 +78,11 @@ class Mail(Field):
         self.__value = None
         self.value = value
 
+
     @property
     def value(self):
         return self.__value
+
 
     @value.setter
     def value(self, value: str) -> None:
@@ -98,6 +100,7 @@ class Mail(Field):
     #     return f"Mail: {self.__value}"
     def __str__(self) -> str:
         return f"Mail: {self.__value}"
+
 
 class Birthday(Field):
     def __init__(self, value):
@@ -147,8 +150,10 @@ class Record:
         self.mails = [Mail(mail)] if mail else []
         # self.location = Location(location)
 
+
     def add_location(self, location):
         self.location = Location(location)
+
 
     def add_phone(self, phone):
         # new_phone = ''.join(filter(str.isdigit, phone))
@@ -158,6 +163,7 @@ class Record:
 
     def add_mail(self, value):
         self.mails.append(Mail(value))
+
 
     def edit_phone(self, old_phone, new_phone):
         found = False

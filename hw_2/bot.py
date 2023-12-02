@@ -1,30 +1,22 @@
-# import os
-# import re
-# import pickle
-
-
-# from collections import UserDict
-# from datetime import date, datetime
-#######################
+from abc import ABC, abstractmethod
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
-    # from .notes_class import NoteBook, add, edit, search_note, delete
-    # from .sort_folder import main as sort_files
-    #hw_1_01
-# try:
+# for package
+#######################
+# from .sort_folder import main as sort_files
 from .birthday import get_birthdays_per_week as birthday_from_now
 from .convert import convert_str_dict
 from .classes import AddressBook, Record
 from .notes_class import NoteBook, add, edit, search_note,delete
-    # from notes_class import NoteBook, add, edit, search_note, delete
-    # from sort_folder import main as sort_files
-# except:
+#######################
+# for .py file
+# from sort_folder import main as sort_files
 # from birthday import get_birthdays_per_week as birthday_from_now
 # from convert import convert_str_dict
 # from classes import AddressBook, Record
-# from notes_class import NoteBook, add, edit, search_note,delete
+# from notes_class import NoteBook, add, edit, search_note, delete
 #######################
-from abc import ABC, abstractmethod
+
 
 class BotView(ABC):
     # @staticmethod
@@ -61,6 +53,7 @@ def save_ab(*args):
     records.save_address_book()
     return "Address book saved successful"
 
+
 def save_notes(*args):
     global notes_obj
     notes_obj.save_notes()
@@ -76,6 +69,7 @@ def load_ab(*args):
     else:
         return "Failed to load address book"
     
+
 def load_notes(*args):
     global notes_obj
     load_records = notes_obj.load_notes()
@@ -90,8 +84,6 @@ def user_error(func):
     def inner(*args):
         try:
             return func(*args)
-        # except AttributeError:
-            # return "ab empty"
         except IndexError:
             return "Give me name and phone please"
         except KeyError:
@@ -117,10 +109,8 @@ def user_error(func):
             if str(e) == "wrong name, try again":
                 return "wrong name, try again"
             else:
-                raise e  # Піднімаэмо помилку наверх, якщо вона іншого типу
+                raise e  # Піднімаємо помилку наверх, якщо вона іншого типу
     return inner
-
-
 
 
 def sanitize_phone_number(phone):
@@ -289,6 +279,7 @@ def delete_record(*args):
     records.delete(name)
     return f"Contact name: {name}, delete successfull"
 
+
 def add_note(*args):
     global notes_obj
     tag = []
@@ -328,6 +319,7 @@ def search_note_(*args):
     else:
         return result
 
+
 def delete_note(*args):
     global notes_obj
     tag = args
@@ -337,6 +329,7 @@ def delete_note(*args):
     # else:
     notes_obj = result
     return text
+
 
 def unknown_cmd(*args):
     return "Unknown command. Try again. Or use 'help'"
@@ -387,6 +380,7 @@ def get_phone(*args):
     if rec:
         return rec
 
+
 # def sort_folder_by_path(*args):
 #     path = str(input("Write path to folder: "))
 #     if os.path.exists(path):
@@ -395,6 +389,7 @@ def get_phone(*args):
 #         # sort_files(path)
 #     else:
 #         return "Path not exist."  
+
 
 # @user_error 
 def show_all(*args):
@@ -430,6 +425,7 @@ def show_all(*args):
         else:
             return return_lst_result #"No records to show"
 
+
 # @user_error 
 def show_notes(*args):
     return_str = "\n"
@@ -444,7 +440,7 @@ def show_notes(*args):
 def close_cmd(*args):
     return "Good bye!"
 
-#################################
+
 def bd_in_days(*args):
     text = ''
     in_days = int(args[0])
@@ -464,7 +460,7 @@ def bd_in_days(*args):
         text = text[:-2]+"\n"
         out_result = text
     return out_result
-#################################
+
 
 COMMANDS = {
             add_note:"add_note",
@@ -497,6 +493,7 @@ COMMANDS = {
 cmd_list = ["hello", "help", "add", "add_note", "edit_note", "search_note", "delete_note", "mail_add", "mail_change", "bd_add", "location_add",
             "days_to_bd", "bd_in_days", "change", "delete", "phone", "show_all", "show_notes", "save_ab","save_notes", "search", "sort_folder", "load_ab", "load_notes", "good bye", "close", "exit"]
 
+
 def parser(text: str):
     for func, kw in COMMANDS.items():
         if text.lower().startswith(kw):
@@ -507,7 +504,6 @@ def parser(text: str):
 def main():
     load_ab("1")
     load_notes("1")
-
     completer = WordCompleter(cmd_list)
     while True:
         user_input = BotInput.prompt("Write comand:", completer=completer)
@@ -531,12 +527,4 @@ def main():
 
 
 if __name__ == "__main__":
-    #################################
-    # try:
-    #     records = load_ab("1")
-    #     # notes_obj = load_notes(notes_obj)
     main()
-    # except:
-    #     records = AddressBook()
-    #     main()
-    #################################
