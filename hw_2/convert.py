@@ -1,6 +1,7 @@
 import re
 from datetime import datetime
 
+
 def convert_str_dict (data_string_to_convert):
     # Визначте регулярний вираз для вилучення інформації
     pattern = re.compile(r"Contact name: (?P<name>.*?), birthday: (?P<birthday>\d{4}-\d{1,2}-\d{1,2})")
