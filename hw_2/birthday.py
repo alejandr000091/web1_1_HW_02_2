@@ -1,5 +1,6 @@
 from datetime import date, timedelta, datetime
 
+
 DAYS = { 0: "Monday",
          1:"Tuesday",
          2: "Wednesday",
@@ -7,6 +8,7 @@ DAYS = { 0: "Monday",
          4: "Friday",
          5: "Saturday",
          6: "Sunday"}
+
 
 def user_sort(result_dict, current_day):
     sorted_dict = {}
@@ -41,7 +43,8 @@ def user_sort(result_dict, current_day):
             step_day += 1
         converted_dict = {DAYS[key]: value for key, value in sorted_dict.items()}
         return(converted_dict)
-        
+
+
 def get_period(start_date: date, days: int):
     result = {}
     for _ in range(days):
@@ -49,6 +52,7 @@ def get_period(start_date: date, days: int):
         result[start_date.day, start_date.month] = start_date.year
         start_date += timedelta(1)
     return result
+
 
 def get_birthdays_per_week(users: list, in_days = 7) -> list:
     result_dict = {}
@@ -73,6 +77,7 @@ def get_birthdays_per_week(users: list, in_days = 7) -> list:
     users = user_sort(result_dict, current_day)
     return users
 
+
 if __name__ == '__main__':
     users = [{"name": "Bill", "birthday": datetime(1990, 12, 26).date()},
              {"name": "John", "birthday": datetime(1995, 12, 29).date()},
@@ -82,6 +87,7 @@ if __name__ == '__main__':
              {"name": "Alex", "birthday": datetime(1990, 1, 3).date()},
              {"name": "Jan Koum", "birthday": datetime(1976, 1, 4).date()},
              ]
+
 
     result = get_birthdays_per_week(users, 10)
     print(result)
