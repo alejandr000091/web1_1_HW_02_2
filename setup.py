@@ -1,4 +1,4 @@
-#work1
+#work bot8 version 0.11.8
 from setuptools import setup, find_namespace_packages
 
 setup(name = "bot8",
