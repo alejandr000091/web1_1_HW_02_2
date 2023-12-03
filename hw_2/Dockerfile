@@ -2,7 +2,7 @@
 FROM python:3.12.0-alpine3.18
 
 # Встановимо змінну середовища
-ENV APP_HOME /hw_1_01
+ENV APP_HOME /hw_2
 
 # Встановимо робочу директорію всередині контейнера
 WORKDIR $APP_HOME
@@ -17,4 +17,4 @@ RUN pip install -r requirements.txt
 # EXPOSE 5000
 
 # Запустимо наш застосунок всередині контейнера
-ENTRYPOINT ["python", "hw_1_01.py"]
+ENTRYPOINT ["python", "bot.py"]
