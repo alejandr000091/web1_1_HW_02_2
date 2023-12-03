@@ -4,17 +4,17 @@ from prompt_toolkit.completion import WordCompleter
 # for package
 #######################
 # from .sort_folder import main as sort_files
-from .birthday import get_birthdays_per_week as birthday_from_now
-from .convert import convert_str_dict
-from .classes import AddressBook, Record
-from .notes_class import NoteBook, add, edit, search_note,delete
+# from .birthday import get_birthdays_per_week as birthday_from_now
+# from .convert import convert_str_dict
+# from .classes import AddressBook, Record
+# from .notes_class import NoteBook, add, edit, search_note,delete
 #######################
 # for .py file
 # from sort_folder import main as sort_files
-# from birthday import get_birthdays_per_week as birthday_from_now
-# from convert import convert_str_dict
-# from classes import AddressBook, Record
-# from notes_class import NoteBook, add, edit, search_note, delete
+from birthday import get_birthdays_per_week as birthday_from_now
+from convert import convert_str_dict
+from classes import AddressBook, Record
+from notes_class import NoteBook, add, edit, search_note, delete
 #######################
 
 
